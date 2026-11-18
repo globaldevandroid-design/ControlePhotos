@@ -1,1 +1,65 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#14263d"><link rel="manifest" href="manifest.webmanifest"><title>Contrôle Photos</title><style>body{font-family:system-ui,sans-serif;background:#f3f6fa;color:#18283b;margin:0}header{background:#14263d;color:white;padding:18px;font-size:23px;font-weight:700}main{max-width:650px;margin:auto;padding:16px}.panel{background:white;padding:16px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 10px #0001}label{display:block;font-weight:600;margin:12px 0 6px}input[type=text],textarea,select{width:100%;box-sizing:border-box;border:1px solid #bcc8d4;border-radius:8px;padding:12px;font:inherit}textarea{min-height:90px}button,.pick{border:0;border-radius:9px;padding:12px 16px;background:#1767bc;color:white;font:inherit;font-weight:650;cursor:pointer;display:inline-block}.secondary{background:#63758a}.danger{background:#b52e35}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.preview{max-width:100%;max-height:250px;object-fit:contain;border-radius:8px;margin-top:12px}.entry{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #e2e7ed}.entry img{width:92px;height:92px;object-fit:cover;border-radius:8px}.entry .info{flex:1;min-width:0}.entry p{overflow-wrap:anywhere;margin:6px 0}.ok{color:#147849;font-weight:800}.ko{color:#bc2737;font-weight:800}.small{font-size:12px;color:#607080}.entry button{padding:8px;font-size:13px}#photo{max-width:100%}</style></head><body><header>📷 Contrôle Photos</header><main><section class="panel"><h2 id="formTitle">Nouveau contrôle</h2><form id="form"><label for="photo">Photo (appareil ou galerie)</label><input id="photo" type="file" accept="image/*" capture="environment"><img id="preview" class="preview" hidden alt="Aperçu de la photo"><label for="title">Nom du contrôle</label><input id="title" type="text" placeholder="Ex. Contrôle équipement" required maxlength="150"><label for="status">Résultat</label><select id="status"><option value="BON">✅ BON</option><option value="PAS BON">❌ PAS BON</option></select><label for="comment">Commentaire</label><textarea id="comment" placeholder="Votre observation..."></textarea><div class="actions"><button type="submit" id="save">Enregistrer</button><button type="button" id="cancel" class="secondary" hidden>Annuler</button></div></form></section><section class="panel"><h2>Liste des contrôles</h2><label for="filter">Afficher</label><select id="filter"><option value="TOUS">Tous</option><option value="BON">Bons</option><option value="PAS BON">Pas bons</option></select><div id="list"></div></section><section class="panel"><h2>Sauvegarde</h2><p class="small">Les photos restent sur cet appareil. Exportez régulièrement une sauvegarde pour éviter leur perte.</p><div class="actions"><button id="export" type="button">Exporter</button><label class="pick secondary" for="import" style="margin:0">Restaurer</label><input type="file" id="import" accept="application/json,.json" hidden></div></section></main><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f4ee">
+<title>Contrôle Photos</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<header>
+  <h1>Contrôle <span>Photos</span></h1>
+  <details id="menu">
+    <summary aria-label="Menu des actions">+</summary>
+    <div class="menu">
+      <button id="add" type="button">Ajouter un contrôle</button>
+      <button id="export" type="button">Exporter une sauvegarde</button>
+      <button id="restore" type="button">Restaurer une sauvegarde</button>
+    </div>
+  </details>
+</header>
+<main>
+  <div class="heading"><h2>Mes contrôles</h2><span id="count" aria-live="polite"></span></div>
+  <div class="toolbar">
+    <input id="search" type="search" aria-label="Rechercher dans les contrôles" placeholder="Rechercher…">
+    <select id="filter" aria-label="Filtrer par résultat">
+      <option value="TOUS">Tous</option><option value="BON">Bons</option><option value="PAS BON">Pas bons</option>
+    </select>
+  </div>
+  <p id="empty" role="status">Chargement des contrôles…</p>
+  <div id="list" class="grid"></div>
+</main>
+<input type="file" id="import" accept="application/json,.json" hidden>
+<dialog id="editor" aria-labelledby="formTitle">
+  <form id="form">
+    <div class="heading"><h2 id="formTitle"></h2><button id="cancel" class="close" type="button" aria-label="Fermer">×</button></div>
+    <div class="photo-preview">
+      <p id="photoPlaceholder">Ajoute une photo</p>
+      <img id="preview" alt="Aperçu de la photo" hidden>
+    </div>
+    <div class="sources">
+      <button id="openCamera" type="button">Appareil photo</button>
+      <button id="openGallery" type="button">Galerie</button>
+    </div>
+    <input id="camera" type="file" accept="image/*" capture="environment" hidden>
+    <input id="gallery" type="file" accept="image/*" hidden>
+    <label for="title">Nom du contrôle</label>
+    <input id="title" type="text" required maxlength="150">
+    <fieldset>
+      <legend>Résultat</legend>
+      <div class="sources">
+        <label class="choice"><input type="radio" name="status" value="BON" checked><span>Bon</span></label>
+        <label class="choice"><input type="radio" name="status" value="PAS BON"><span>Pas bon</span></label>
+      </div>
+    </fieldset>
+    <label for="comment">Commentaire</label>
+    <textarea id="comment" rows="3"></textarea>
+    <p id="formError" role="alert" hidden></p>
+    <button id="save" class="primary" type="submit">Enregistrer</button>
+    <button id="delete" class="danger" type="button" hidden>Supprimer le contrôle</button>
+  </form>
+</dialog>
+</body>
+</html>
