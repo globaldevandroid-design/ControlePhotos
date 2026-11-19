@@ -8,3 +8,5 @@ PROJET ANDROID STUDIO - CONTRÔLE PHOTOS
 Aucun serveur de stockage ni permission Internet. Les contrôles sont enregistrés dans IndexedDB de la WebView locale. Sauvegarde JSON via le sélecteur de documents Android.
 
 ATTENTION : projet source non compilé ni testé dans cet environnement. Le sélecteur photo dépend de la prise en charge Android/WebView de capture=environment.
+
+Test de MAJ.
