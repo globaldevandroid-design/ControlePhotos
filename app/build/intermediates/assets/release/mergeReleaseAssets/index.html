@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f4ee">
+<title>Contrôle Photos</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<header>
+  <h1>Contrôle <span>Photos</span></h1>
+  <details id="menu">
+    <summary aria-label="Menu des actions">+</summary>
+    <div class="menu">
+      <button id="add" type="button">Ajouter un contrôle</button>
+      <button id="export" type="button">Exporter une sauvegarde</button>
+      <button id="restore" type="button">Restaurer une sauvegarde</button>
+    </div>
+  </details>
+</header>
+<main>
+  <div class="heading"><h2>Mes contrôles</h2><span id="count" aria-live="polite"></span></div>
+  <div class="toolbar">
+    <input id="search" type="search" aria-label="Rechercher dans les contrôles" placeholder="Rechercher…">
+    <select id="filter" aria-label="Filtrer par résultat">
+      <option value="TOUS">Tous</option><option value="BON">Bons</option><option value="PAS BON">Pas bons</option>
+    </select>
+  </div>
+  <p id="empty" role="status">Chargement des contrôles…</p>
+  <div id="list" class="grid"></div>
+</main>
+<input type="file" id="import" accept="application/json,.json" hidden>
+<dialog id="editor" aria-labelledby="formTitle">
+  <form id="form">
+    <div class="heading"><h2 id="formTitle"></h2><button id="cancel" class="close" type="button" aria-label="Fermer">×</button></div>
+    <div class="photo-preview">
+      <p id="photoPlaceholder">Ajoute une photo</p>
+      <img id="preview" alt="Aperçu de la photo" hidden>
+    </div>
+    <div class="sources">
+      <button id="openCamera" type="button">Appareil photo</button>
+      <button id="openGallery" type="button">Galerie</button>
+    </div>
+    <input id="camera" type="file" accept="image/*" capture="environment" hidden>
+    <input id="gallery" type="file" accept="image/*" hidden>
+    <label for="title">Nom du contrôle</label>
+    <input id="title" type="text" required maxlength="150">
+    <fieldset>
+      <legend>Résultat</legend>
+      <div class="sources">
+        <label class="choice"><input type="radio" name="status" value="BON" checked><span>Bon</span></label>
+        <label class="choice"><input type="radio" name="status" value="PAS BON"><span>Pas bon</span></label>
+      </div>
+    </fieldset>
+    <label for="comment">Commentaire</label>
+    <textarea id="comment" rows="3"></textarea>
+    <p id="formError" role="alert" hidden></p>
+    <button id="save" class="primary" type="submit">Enregistrer</button>
+    <button id="delete" class="danger" type="button" hidden>Supprimer le contrôle</button>
+  </form>
+</dialog>
+</body>
+</html>

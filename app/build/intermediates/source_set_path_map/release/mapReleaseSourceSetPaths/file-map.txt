@@ -1,0 +1,14 @@
+fr.globaldev.controlephotos.app-annotation-experimental-1.4.1-0 C:\Users\sdesa\.gradle\caches\9.8.1\transforms\09ecd3d4279d6fbacdc922ac47191ffb\transformed\annotation-experimental-1.4.1\res
+fr.globaldev.controlephotos.app-core-runtime-2.2.0-1 C:\Users\sdesa\.gradle\caches\9.8.1\transforms\744630b7990ec34c8467cde2d05f5b0d\transformed\core-runtime-2.2.0\res
+fr.globaldev.controlephotos.app-profileinstaller-1.3.0-2 C:\Users\sdesa\.gradle\caches\9.8.1\transforms\88c2d358d936050e99fb2132c3b6504e\transformed\profileinstaller-1.3.0\res
+fr.globaldev.controlephotos.app-startup-runtime-1.1.1-3 C:\Users\sdesa\.gradle\caches\9.8.1\transforms\a37b609be58c4fed49bb5ee6ec01ddbe\transformed\startup-runtime-1.1.1\res
+fr.globaldev.controlephotos.app-webkit-1.12.1-4 C:\Users\sdesa\.gradle\caches\9.8.1\transforms\d53bcc276de50afc4b3a0023a72f805b\transformed\webkit-1.12.1\res
+fr.globaldev.controlephotos.app-core-1.13.1-5 C:\Users\sdesa\.gradle\caches\9.8.1\transforms\ddc881815b2ccda8f685f2e468649a0d\transformed\core-1.13.1\res
+fr.globaldev.controlephotos.app-lifecycle-runtime-2.6.2-6 C:\Users\sdesa\.gradle\caches\9.8.1\transforms\e7b18c526b02cfe6ceb04a1ae0d5dfa8\transformed\lifecycle-runtime-2.6.2\res
+fr.globaldev.controlephotos.app-pngs-7 C:\Users\sdesa\Projets\ControlePhotos\ControlePhotos\app\build\generated\res\pngs\release
+fr.globaldev.controlephotos.app-resValues-8 C:\Users\sdesa\Projets\ControlePhotos\ControlePhotos\app\build\generated\res\resValues\release
+fr.globaldev.controlephotos.app-packageReleaseResources-9 C:\Users\sdesa\Projets\ControlePhotos\ControlePhotos\app\build\intermediates\incremental\release\packageReleaseResources\merged.dir
+fr.globaldev.controlephotos.app-packageReleaseResources-10 C:\Users\sdesa\Projets\ControlePhotos\ControlePhotos\app\build\intermediates\incremental\release\packageReleaseResources\stripped.dir
+fr.globaldev.controlephotos.app-release-11 C:\Users\sdesa\Projets\ControlePhotos\ControlePhotos\app\build\intermediates\merged_res\release\mergeReleaseResources
+fr.globaldev.controlephotos.app-main-12 C:\Users\sdesa\Projets\ControlePhotos\ControlePhotos\app\src\main\res
+fr.globaldev.controlephotos.app-release-13 C:\Users\sdesa\Projets\ControlePhotos\ControlePhotos\app\src\release\res

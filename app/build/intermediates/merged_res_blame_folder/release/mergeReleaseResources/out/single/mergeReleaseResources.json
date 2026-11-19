@@ -1,0 +1,6 @@
+[
+    {
+        "merged": "fr.globaldev.controlephotos.app-release-11:/xml_camera_paths.xml.flat",
+        "source": "fr.globaldev.controlephotos.app-main-12:/xml/camera_paths.xml"
+    }
+]
